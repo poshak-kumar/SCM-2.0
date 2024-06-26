@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<SCM-2.0>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.scm.SCM_20.Application",
+            "projectName": "SCM-2.0",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="parent(content, title, script)" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:replace="${title}">SCM - Base Page</title>
+    <link rel="stylesheet" href="../static/css/output.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!--Common Header-->
+
+
+    <!--Dynamic main content-->
+    <section th:replace="${content}">
+    </section>
+
+
+
+    <!--Common Footer-->
+
+
+
+    <!--Flowbite Java Script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <th:block data-th-replace="${script}"></th:block>
+  </body>
+</html>
