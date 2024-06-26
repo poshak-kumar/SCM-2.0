@@ -1,0 +1,5 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* npx tailwindcss -i ./SCM-2.0/src/main/resources/static/css/style.css -o ./SCM-2.0/src/main/resources/static/css/output.css --watch */
