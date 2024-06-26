@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="parent(content, title, script)" xmlns:th="http://www.thymeleaf.org">
+<html class="light" lang="en" th:fragment="parent(content, title, script)" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,8 +10,9 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class="dark:bg-gray-900 dark:text-white">
     <!--Common Header-->
+    <div th:replace="~{navbar :: navbar}"></div>
 
 
     <!--Dynamic main content-->

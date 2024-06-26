@@ -1,18 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+  lang="en"
+  th:replace="~{base :: parent(~{::#main_content}, ~{::title}, ~{::script})}"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-    <link rel="stylesheet" href="../static/css/output.css" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
-      rel="stylesheet"
-    />
+    <title>Home Page</title>
   </head>
   <body>
-    <div class="di">
-      <a
+    <div id="main_content">
+      <div class="p-4">
+        <h1 class="text-3xl font-bold">Welcome to Home Page</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aut, animi
+        suscipit sit earum voluptates officia sed aliquam, recusandae libero
+        reprehenderit architecto, rerum laudantium autem assumenda
+        exercitationem mollitia laboriosam repellat cupiditate illo iure!
+        Exercitationem aut, porro cum perspiciatis accusamus possimus animi
+        consequuntur, velit eligendi magni odio necessitatibus rem vitae ad.
+      </p>
+      </div>
+
+      <div class="content-center p-4">
+        <a
         href="#"
         class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
       >
@@ -22,12 +33,19 @@
           Noteworthy technology acquisitions 2021
         </h5>
         <p class="font-normal text-gray-700 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2021 so far
+          Here are the biggest enterprise technology acquisitions of 2021 so
+          far, in reverse chronological order.
         </p>
       </a>
+      </div>
+      
     </div>
 
-    <!--Flowbite Java Script-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script>
+      console.log("Welcome to Home Page 1");
+    </script>
+    <script>
+      console.log("Welcome to Home Page 2");
+    </script>
   </body>
 </html>
