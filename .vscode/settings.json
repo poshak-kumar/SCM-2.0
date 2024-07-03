@@ -16,5 +16,6 @@
             "group": "Databases",
             "askForPassword": true
         }
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
