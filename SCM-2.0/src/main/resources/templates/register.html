@@ -10,19 +10,162 @@
   </head>
   <body>
     <div id="main_content">
-      <div class="p-4">
-        <h1 class="text-3xl font-bold">Welcome to Sign-up Page</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aut, animi
-        suscipit sit earum voluptates officia sed aliquam, recusandae libero
-        reprehenderit architecto, rerum laudantium autem assumenda
-        exercitationem mollitia laboriosam repellat cupiditate illo iure!
-        Exercitationem aut, porro cum perspiciatis accusamus possimus animi
-        consequuntur, velit eligendi magni odio necessitatibus rem vitae ad.
-      </p>
+      <div class="grid grid-cols-8 mt-6 mb-6">
+        <div class="col-span-1"></div>
+        <div class="col-span-6">
+          <div
+            class="block p-6 border-t-4 border-blue-700 bg-white border rounded-lg shadow hover:bg-gray-100 dark:bg-gray-900 dark:border-blue-700 dark:hover:bg-gray-800"
+          >
+            <!--Message Template-->
+            <div data-th-replace="~{messageTemplate :: messageTemplate}"></div>
+            <h5
+              class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center"
+            >
+              Sign up here!
+            </h5>
+            <p class="font-normal text-gray-700 dark:text-gray-400 text-center">
+              Cloud-based tool for seamless, secure contact management.<br />Sync,
+              categorize, and search effortlessly.<br />Manage your contacts
+              smarter today!
+            </p>
+
+            <!--Form-->
+            <form
+              class="max-w-lg mx-auto mt-6"
+              data-th-action="@{'/do-register'}"
+              method="post"
+              data-th-object="${userForm}"
+              novalidate
+            >
+              <!--Fullname field-->
+              <div class="mb-3">
+                <label
+                  for="fullname"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  id="fullname"
+                  th:field="*{name}"
+                  class=" bg-gray-50 border border-blue-700 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-blue-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter name"
+                  required
+                />
+                <span
+                  data-th-if="${#fields.hasErrors('name')}"
+                  data-th-errors="*{name}"
+                  class="text-red-700"
+                ></span>
+              </div>
+
+              <!--Email field-->
+              <div class="mb-3">
+                <label
+                  for="email"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Your email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  data-th-field="*{email}"
+                  class="bg-gray-50 border border-blue-700 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-blue-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter email -> { name@example.com }"
+                  required
+                />
+                <span
+                  data-th-if="${#fields.hasErrors('email')}"
+                  data-th-errors="*{email}"
+                  class="text-red-700"
+                ></span>
+              </div>
+
+              <!--Password field-->
+              <div class="mb-3">
+                <label
+                  for="password"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Your password</label
+                >
+                <input
+                  type="password"
+                  id="password"
+                  data-th-field="*{password}"
+                  class="bg-gray-50 border border-blue-700 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-blue-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required
+                />
+                <span
+                  data-th-if="${#fields.hasErrors('password')}"
+                  data-th-errors="*{password}"
+                  class="text-red-700"
+                ></span>
+              </div>
+
+              <!--Phone number field-->
+              <div class="mb-3">
+                <label
+                  for="phoneNum"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Phone Nomber</label
+                >
+                <input
+                  type="text"
+                  id="phoneNum"
+                  data-th-field="*{phoneNum}"
+                  class="bg-gray-50 border border-blue-700 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-blue-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter phone number"
+                  required
+                />
+                <span
+                  data-th-if="${#fields.hasErrors('phoneNum')}"
+                  data-th-errors="*{phoneNum}"
+                  class="text-red-700"
+                ></span>
+              </div>
+
+              <!--About field {textarea}-->
+
+              <div class="mb-3">
+                <label
+                  for="message"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Write something about yourself</label
+                >
+                <textarea
+                  id="message"
+                  data-th-field="*{about}"
+                  rows="4"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-blue-700 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-blue-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Write your thoughts here..."
+                ></textarea>
+                <span
+                  data-th-if="${#fields.hasErrors('about')}"
+                  data-th-errors="*{about}"
+                  class="text-red-700"
+                ></span>
+              </div>
+
+              <!--Submit Button-->
+              <div class="flex justify-center space-x-6">
+                <button
+                  type="submit"
+                  class="text-white bg-gray-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Submit
+                </button>
+                <button
+                  type="reset"
+                  class="text-white border bg-yellow-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Reset
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-span-1"></div>
       </div>
-
     </div>
-
   </body>
 </html>
