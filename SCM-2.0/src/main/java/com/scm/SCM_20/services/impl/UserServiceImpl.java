@@ -7,9 +7,11 @@ import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.scm.SCM_20.entities.User;
+import com.scm.SCM_20.helpers.AppConstants;
 import com.scm.SCM_20.helpers.ResourceNotFoundException;
 import com.scm.SCM_20.repositories.UserRepository;
 import com.scm.SCM_20.services.UserService;
@@ -19,6 +21,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -65,7 +70,11 @@ public class UserServiceImpl implements UserService {
 
         user.setUserId(userId);
 
-        // Set the Password Encoder
+        // Saving the encoded password
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        // Setting the default role of User
+        user.setRolesList(List.of(AppConstants.ROLE_USER));
 
         // Add a default profile when User will created
         

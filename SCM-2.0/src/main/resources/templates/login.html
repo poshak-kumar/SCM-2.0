@@ -10,19 +10,103 @@
   </head>
   <body>
     <div id="main_content">
-      <div class="p-4">
-        <h1 class="text-3xl font-bold">Welcome to Login Page</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aut, animi
-        suscipit sit earum voluptates officia sed aliquam, recusandae libero
-        reprehenderit architecto, rerum laudantium autem assumenda
-        exercitationem mollitia laboriosam repellat cupiditate illo iure!
-        Exercitationem aut, porro cum perspiciatis accusamus possimus animi
-        consequuntur, velit eligendi magni odio necessitatibus rem vitae ad.
-      </p>
+      <div class="grid grid-cols-8 mt-6 mb-6">
+        <div class="col-span-1"></div>
+        <div class="col-span-6">
+          <div
+            class="block p-6 border-t-4 border-green-700 bg-white border rounded-lg shadow hover:bg-gray-100 dark:bg-gray-900 dark:border-green-700 dark:hover:bg-gray-800"
+          >
+            <!--Message Template-->
+            <div data-th-replace="~{messageTemplate :: messageTemplate}"></div>
+            <h5
+              class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center"
+            >
+              Login here!
+            </h5>
+            <p class="font-normal text-gray-700 dark:text-gray-400 text-center">
+              Cloud-based tool for seamless, secure contact management.<br />Sync,
+              categorize, and search effortlessly.<br />Manage your contacts
+              smarter today!
+            </p>
+
+            <div class="text-red-600 text-center pt-6" th:if="${param.error}">
+              Invalid username and password.</div>
+            <div class="text-green-600 text-center pt-6" th:if="${param.logout}">
+              You have been logged out.</div>
+
+
+            <!--Form-->
+            <form
+              class="max-w-lg mx-auto mt-6"
+              method="post"
+              data-th-action="@{'/authenticate'}"
+
+              novalidate
+            >
+
+              <!--Email or Username field-->
+              <div class="mb-3">
+                <label
+                  for="email"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Your email / username</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="bg-gray-50 border border-blue-700 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-blue-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter email or Username"
+                  required
+                />
+                <!-- <span
+                  data-th-if="${#fields.hasErrors('email')}"
+                  data-th-errors="*{email}"
+                  class="text-red-700"
+                ></span> -->
+              </div>
+
+              <!--Password field-->
+              <div class="mb-3">
+                <label
+                  for="password"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Your password</label
+                >
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="bg-gray-50 border border-blue-700 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-blue-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required
+                />
+                <!-- <span
+                  data-th-if="${#fields.hasErrors('password')}"
+                  data-th-errors="*{password}"
+                  class="text-red-700"
+                ></span> -->
+              </div>
+
+             
+              <!--Submit Button-->
+              <div class="flex justify-center space-x-6">
+                <button
+                  type="submit"
+                  class="text-white bg-gray-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Login
+                </button>
+                <button
+                  type="reset"
+                  class="text-white border bg-yellow-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Reset
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-
     </div>
-
   </body>
 </html>
